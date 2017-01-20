@@ -2,15 +2,17 @@ language: csharp
 os: osx
 
 before_install:
+    - echo Downloading Butler
+    - curl -o butler https://dl.itch.ovh/butler/darwin-amd64/head/butler
+    - echo Downloading Unity 5.5.0f3
     - curl -o Unity.pkg http://netstorage.unity3d.com/unity/3757309da7e7/MacEditorInstaller/Unity-5.5.0f3.pkg
-    - curl -o https://dl.itch.ovh/butler/darwin-amd64/head/butler
 
 install:
     - sudo installer -dumplog -package Unity.pkg -target /
-    - export PATH="$PATH:./"
+    - export PATH="$PATH:./butler"
 
 before_script:
-    - project="ci-build"
+    - project="testci"
 
 script:
     - /Applications/Unity/Unity.app/Contents/MacOS/Unity \
