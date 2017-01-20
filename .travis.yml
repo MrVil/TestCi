@@ -1,0 +1,29 @@
+language: csharp
+os: osx
+
+before_install:
+    - curl -o Unity.pkg http://netstorage.unity3d.com/unity/3757309da7e7/MacEditorInstaller/Unity-5.5.0f3.pkg
+    - curl -o https://dl.itch.ovh/butler/darwin-amd64/head/butler
+
+install:
+    - sudo installer -dumplog -package Unity.pkg -target /
+    - export PATH="$PATH:./"
+
+before_script:
+    - project="ci-build"
+
+script:
+    - /Applications/Unity/Unity.app/Contents/MacOS/Unity \
+        -batchmode \
+        -nographics \
+        -silent-crashes \
+        -logFile $(pwd)/unity.log \
+        -projectPath $(pwd) \
+        -buildWindowsPlayer "$(pwd)/Build/windows/$project.exe" \
+        -quit
+
+after_success:
+    - echo "Succes !"
+
+deploy: 
+    - butler push ./ mrvil/testci:win32
