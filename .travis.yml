@@ -6,6 +6,6 @@ sudo: required
 rvm:
 - 2.1.2
 install:
-- ./Scripts/install.sh
+- sudo ./Scripts/install.sh
 script:
-- ./Scripts/build.sh
+- sudo ./Scripts/build.sh
