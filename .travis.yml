@@ -5,7 +5,7 @@ osx_image: xcode61
 sudo: required
 rvm:
 - 2.1.2
+before_install:
+- echo Downloading Butler
 install:
 - sudo ./Scripts/install.sh
-script:
-- sudo ./Scripts/build.sh
