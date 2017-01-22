@@ -8,21 +8,8 @@ rvm:
 before_install:
 - echo Downloading Butler
 - curl -o butler https://dl.itch.ovh/butler/darwin-amd64/head/butler
-- echo Downloading Unity 5.5.0f3
-- curl -o Unity.pkg http://netstorage.unity3d.com/unity/3757309da7e7/MacEditorInstaller/Unity-5.5.0f3.pkg
 
 install:
-- sudo installer -dumplog -package Unity.pkg -target /
 - export PATH="$PATH:./butler"
 
-before_script:
-- project="testci"
-
-script:
-- /Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -nographics -silent-crashes -logFile $(pwd)/unity.log -projectPath $(pwd) -buildWindowsPlayer "$(pwd)/Build/windows/$project.exe" -quit
-
-after_success:
-- echo "Succes !"
-
-deploy: 
-- butler push ./ mrvil/testci:win32
+script: ech true
