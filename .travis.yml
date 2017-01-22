@@ -3,8 +3,6 @@
 language: objective-c
 osx_image: xcode61
 sudo: required
-rvm:
-- 2.1.2
 before_install:
 - echo Downloading Butler
 - curl -o butler https://dl.itch.ovh/butler/darwin-amd64/head/butler
@@ -12,4 +10,4 @@ before_install:
 install:
 - export PATH="$PATH:./butler"
 
-script: ech true
+script: echo true
