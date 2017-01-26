@@ -6,6 +6,8 @@ sudo: required
 before_install:
 - echo Downloading Butler
 - curl -o butler https://dl.itch.ovh/butler/darwin-amd64/head/butler
+- echo Downloading Unity 5.5.0f3
+- curl -o Unity.pkg http://netstorage.unity3d.com/unity/3757309da7e7/MacEditorInstaller/Unity-5.5.0f3.pkg
 
 install:
 - export PATH="$PATH:./butler"
